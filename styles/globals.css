@@ -1,16 +1,25 @@
-html,
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100,400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    @apply font-inter bg-brandLight;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.social-icons {
+    a {
+        @apply p-2 transition-all;
+        
+        &:hover {
+            @apply opacity-100;
+            
+            transform: translateY(-3px) rotate(-8deg);
+        }
+    }
 }
 
-* {
-  box-sizing: border-box;
+p > a {
+    @apply text-brandRed hover:underline;
 }
