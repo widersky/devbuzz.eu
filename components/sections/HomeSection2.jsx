@@ -3,13 +3,8 @@ import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { motion } from "framer-motion";
 
-import Button from "../Button";
-
-import "../../helpers/i18n";
-import { leftSideAnim, rightSideAnim, scrollPromptAnim, defaultTransition } from "../../helpers/animations";
-
 const HomeSection2 = () => {
-    const { t } = useTranslation();
+		const { t } = useTranslation('common');
     
     return (
         <div className="py-32">

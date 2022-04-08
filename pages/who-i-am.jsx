@@ -3,18 +3,15 @@ import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { motion } from "framer-motion";
 
-import "../helpers/i18n";
 import {
     leftSideAnim,
     rightSideAnim,
     defaultTransition,
 } from "../helpers/animations";
-
-import SiteHeader from "../components/globals/SiteHeader";
-import Footer from "../components/globals/SiteFooter";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const Home = () => {
-    const { t } = useTranslation();
+    const { t } = useTranslation(['common']);
 
     return (
         <>
@@ -87,5 +84,11 @@ const Home = () => {
         </>
     );
 };
+
+export const getServerSideProps = async ({ locale }) => ({
+	props: {
+		...(await serverSideTranslations(locale, ["common"])),
+	},
+});
 
 export default Home;

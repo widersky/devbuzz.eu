@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { motion } from "framer-motion";
 
-import "../helpers/i18n";
 import {
     leftSideAnim,
     rightSideAnim,
@@ -13,9 +12,10 @@ import {
 } from "../helpers/animations";
 
 import ProjectTile from "../components/ProjectTile";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const AfterHours = () => {
-    const { t } = useTranslation();
+    const { t } = useTranslation(['common']);
 
     return (
         <>
@@ -92,5 +92,11 @@ const AfterHours = () => {
         </>
     );
 };
+
+export const getServerSideProps = async ({ locale }) => ({
+	props: {
+		...(await serverSideTranslations(locale, ["common"])),
+	},
+});
 
 export default AfterHours;

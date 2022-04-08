@@ -4,15 +4,15 @@ import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { motion } from "framer-motion";
 
-import "../helpers/i18n";
 import {
     leftSideAnim,
     rightSideAnim,
     defaultTransition,
 } from "../helpers/animations";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const WhoIWorkWith = () => {
-    const { t } = useTranslation();
+    const { t } = useTranslation(['common']);
 
     return (
         <>
@@ -95,5 +95,11 @@ const WhoIWorkWith = () => {
         </>
     );
 };
+
+export const getServerSideProps = async ({ locale }) => ({
+	props: {
+		...(await serverSideTranslations(locale, ["common"])),
+	},
+});
 
 export default WhoIWorkWith;

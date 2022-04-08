@@ -23,3 +23,7 @@ body {
 p > a {
     @apply text-brandRed hover:underline;
 }
+
+code {
+    @apply border border-gray-200 rounded py-1 px-2 font-mono bg-white shadow-sm text-sm;
+}

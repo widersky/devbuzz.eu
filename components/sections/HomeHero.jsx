@@ -9,9 +9,6 @@ import { motion } from "framer-motion";
 import Button from "../Button";
 import TechStack from '../globals/TechStack';
 
-// Internationalization
-import "../../helpers/i18n";
-
 // Animations definitions
 import {
     leftSideAnim,
@@ -21,7 +18,7 @@ import {
 } from "../../helpers/animations";
 
 const HomeHero = () => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('common');
 
     return (
         <div className="pt-48 pb-24 flex items-center">
@@ -48,7 +45,7 @@ const HomeHero = () => {
 
                         <TechStack />
 
-                        <p className="relative mt-24 text-xs w-72 text-brandTextLight leading-relaxed pl-10">
+                        <div className="relative mt-24 text-xs w-72 text-brandTextLight leading-relaxed pl-10">
                             <div className="absolute top-4 left-0">
                                 <Image
                                     src="/icon-cookies.webp"
@@ -58,8 +55,10 @@ const HomeHero = () => {
                                 />
                             </div>
                             <i className="block w-24 h-[1px] bg-brandTextLight mb-4 -translate-x-10"></i>
-                            {t("cookies")} 😎
-                        </p>
+                            <p>
+                                {t("cookies")} 😎
+                            </p>
+                        </div>
                     </div>
                 </motion.div>
 

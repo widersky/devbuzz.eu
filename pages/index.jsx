@@ -5,6 +5,7 @@ import HomeSection1 from '../components/sections/HomeSection1';
 import HomeSection2 from '../components/sections/HomeSection2';
 import HomeSection3 from '../components/sections/HomeSection3';
 import HomeSection4 from '../components/sections/HomeSection4';
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const Home = () => {
   return (
@@ -24,5 +25,11 @@ const Home = () => {
     </>
   )
 }
+
+export const getServerSideProps = async ({ locale }) => ({
+	props: {
+		...(await serverSideTranslations(locale, ["common"])),
+	},
+});
 
 export default Home;

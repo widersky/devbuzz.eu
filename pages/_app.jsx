@@ -2,11 +2,12 @@ import '../styles/globals.css';
 
 import Head from 'next/head';
 import { AnimatePresence } from "framer-motion";
+import { appWithTranslation } from 'next-i18next';
 
 import SiteHeader from '../components/globals/SiteHeader';
 import SiteFooter from '../components/globals/SiteFooter';
 
-const DevBuzzEU = ({ Component, pageProps, router }) => {
+const DevBuzzEU = ({ Component, pageProps, router }) => {    
     return (
         <>
             <Head>
@@ -15,7 +16,7 @@ const DevBuzzEU = ({ Component, pageProps, router }) => {
 
             <SiteHeader />
 
-            <div className='flex-grow relative mt-32'>
+            <div className='flex-grow relative mt-[7.375rem]'>
                 <AnimatePresence
                     exitBeforeEnter
                     onExitComplete={() => window.scrollTo(0, 0)}
@@ -29,4 +30,4 @@ const DevBuzzEU = ({ Component, pageProps, router }) => {
     )
 }
 
-export default DevBuzzEU;
+export default appWithTranslation(DevBuzzEU);

@@ -4,16 +4,16 @@ import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
-import "../helpers/i18n";
 import {
     leftSideAnim,
     rightSideAnim,
     defaultTransition,
 } from "../helpers/animations";
 import TechStack from "../components/globals/TechStack";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const WhatIDo = () => {
-    const { t } = useTranslation();
+    const { t } = useTranslation(['common']);
 
     return (
         <>
@@ -84,5 +84,11 @@ const WhatIDo = () => {
         </>
     );
 };
+
+export const getServerSideProps = async ({ locale }) => ({
+	props: {
+		...(await serverSideTranslations(locale, ["common"])),
+	},
+});
 
 export default WhatIDo;

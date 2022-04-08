@@ -4,13 +4,11 @@ import { useTranslation } from "next-i18next";
 import { motion } from "framer-motion";
 import { v4 as uuidv4 } from "uuid";
 
-import "../../helpers/i18n";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 const HomeSection1 = () => {
-    const { t } = useTranslation();
+	const { t } = useTranslation('common');
     const swiperRef = useRef(null);
 
     const refs = [
