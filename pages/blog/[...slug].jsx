@@ -13,11 +13,13 @@ const SinglePostLayout = dynamic(() =>
 import Paragraph from "../../components/blog/Paragraph";
 import Heading1 from "../../components/blog/Heading1";
 import Heading2 from "../../components/blog/Heading2";
+import Ul from "../../components/blog/Ul";
 
 const components = {
 	p: Paragraph,
 	h1: Heading1,
-	h2: Heading2
+	h2: Heading2,
+	ul: Ul
 };
 
 const SinglePost = ({source, frontMatter}) => {

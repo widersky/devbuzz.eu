@@ -11,6 +11,10 @@ const SiteHeader = () => {
 
 	const siteNav = [
 		{
+			text: t("navOne"),
+			route: "/",
+		},
+		{
 			text: t("navTwo"),
 			route: "/who-i-am",
 		},
@@ -83,7 +87,7 @@ const SiteHeader = () => {
 									i18n.language === "en"
 										? "opacity-100"
 										: "opacity-50 hover:opacity-70"
-								} transition-all cursor-pointer shadow-lg relative rounded-md overflow-hidden`}
+								} transition-all cursor-pointer shadow-lg relative`}
 								style={{ minWidth: 26, minHeight: 20 }}
 								width={26}
 								height={20}
@@ -93,7 +97,9 @@ const SiteHeader = () => {
 									alt="GB Flag"
 									loading="lazy"
 									layout="fill"
+									className="rounded-md"
 								/>
+								{ i18n.language === 'en' ? <i className="block w-2 h-1 bg-brandRed rounded absolute top-6 left-1/2 -translate-x-1/2"></i> : '' }
 							</div>
 						</Link>
 						<Link
@@ -106,7 +112,7 @@ const SiteHeader = () => {
 									i18n.language === "pl"
 										? "opacity-100"
 										: "opacity-50 hover:opacity-70"
-								} transition-all cursor-pointer shadow-lg relative rounded-md overflow-hidden`}
+								} transition-all cursor-pointer shadow-lg relative`}
 								style={{ minWidth: 26, minHeight: 20 }}
 								width={26}
 								height={20}
@@ -116,7 +122,9 @@ const SiteHeader = () => {
 									alt="PL flag"
 									loading="lazy"
 									layout="fill"
+									className="rounded-md"
 								/>
+								{ i18n.language === 'pl' ? <i className="block w-2 h-1 bg-brandRed rounded absolute top-6 left-1/2 -translate-x-1/2"></i> : '' }
 							</div>
 						</Link>
 					</div>

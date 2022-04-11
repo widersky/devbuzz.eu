@@ -1,8 +1,9 @@
-import { useTranslation } from "next-i18next";
-import { motion } from "framer-motion";
+import {useTranslation} from "next-i18next";
+import {motion} from "framer-motion";
+import {floating1, floating2} from "../../helpers/animations";
 
 const HomeSection3 = () => {
-	const { t } = useTranslation("common");
+	const {t} = useTranslation("common");
 
 	return (
 		<div className="py-32">
@@ -20,20 +21,15 @@ const HomeSection3 = () => {
 				</div>
 
 				<div className="relative flex justify-center items-center">
+
 					<motion.img
-						animate={{
-							y: [-35, 20, -35],
-						}}
-						transition={{
-							duration: 5,
-							times: [0, 0.5, 1],
-							ease: "easeInOut",
-							repeat: Infinity,
-						}}
-						src="/icon-3d-rocket.webp"
-						className="w-72 h-72"
-						loading="lazy"
+						animate={floating1}
+						transition={{duration: 5, times: [0, .5, 1], ease: "easeInOut", repeat: Infinity}}
+						src="/floating-images/image-idea.webp"
+						width={512}
+						height={512}
 					/>
+
 				</div>
 			</div>
 		</div>

@@ -16,16 +16,18 @@ const DevBuzzEU = ({ Component, pageProps, router }) => {
 
             <SiteHeader />
 
-            <div className='flex-grow relative mt-[7.375rem]'>
-                <AnimatePresence
-                    exitBeforeEnter
-                    onExitComplete={() => window.scrollTo(0, 0)}
-                >
-                    <Component {...pageProps} key={router.route} />
-                </AnimatePresence>
-            </div>
-            
-            <SiteFooter />
+            <div className={"flex flex-col min-h-screen pt-[7.375rem]"}>
+							<div className={"flex flex-col flex-grow relative"}>
+								<AnimatePresence
+									exitBeforeEnter
+									onExitComplete={() => window.scrollTo(0, 0)}
+								>
+									<Component {...pageProps} key={router.route} />
+								</AnimatePresence>
+							</div>
+
+							<SiteFooter />
+						</div>
         </>
     )
 }

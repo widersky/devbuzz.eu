@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 // Components
 import Button from "../Button";
 import TechStack from '../globals/TechStack';
+import Picture from "../Picture";
 
 // Animations definitions
 import {
@@ -21,8 +22,8 @@ const HomeHero = () => {
     const { t } = useTranslation('common');
 
     return (
-        <div className="pt-48 pb-24 flex items-center">
-            <div className="container mx-auto grid grid-cols-2 gap-10 relative pb-28">
+        <div className="flex items-center min-h-[84vh] relative">
+            <div className="container mx-auto grid grid-cols-2 gap-10 relative">
                 {/* Left side */}
                 <motion.div
                     initial={leftSideAnim.initial}
@@ -69,24 +70,20 @@ const HomeHero = () => {
                     exit={rightSideAnim.exit}
                     transition={defaultTransition}
                 >
-                    <div className="relative flex justify-center mt-24">
-                        <div className="absolute left-1/2 -translate-x-1/2 -translate-y-24 rotate-12 w-96 h-96 rounded-[96px] bg-white bg-opacity-90"></div>
-
-                        <Image className="relative z-10" src="/avatar.webp" alt="Adrian Widerski - avatar" width={250} height={626} />
-                    </div>
+                    <Picture width={232} height={725} fileName={"avatar"} />
                 </motion.div>
-
-                {/* Scroll prompt */}
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-                    <motion.div
-                        initial={scrollPromptAnim.initial}
-                        animate={scrollPromptAnim.animate}
-                        exit={scrollPromptAnim.exit}
-                    >
-                        <Image src="/scroll-down.webp" loading="lazy" width={48} height={48} alt="Scroll down" />
-                    </motion.div>
-                </div>
             </div>
+
+					{/* Scroll prompt */}
+					<div className="absolute top-full left-1/2 -translate-x-1/2">
+						<motion.div
+							initial={scrollPromptAnim.initial}
+							animate={scrollPromptAnim.animate}
+							exit={scrollPromptAnim.exit}
+						>
+							<Image src="/scroll-down.webp" loading="lazy" width={48} height={48} alt="Scroll down" />
+						</motion.div>
+					</div>
         </div>
     );
 };

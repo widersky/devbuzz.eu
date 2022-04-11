@@ -4,8 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+	@apply max-w-full overflow-x-hidden;
+}
+
 body {
-    @apply font-inter bg-brandLight;
+    @apply font-inter bg-brandLight min-h-screen;
 }
 
 .social-icons {
