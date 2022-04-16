@@ -204,6 +204,7 @@ const SiteHeader = () => {
 									className="place-self-center relative"
 									width={item.size.x}
 									height={item.size.y}
+									key={uuidv4()}
 								>
 									<Image
 										src={`/icon-${item.name}.svg`}
