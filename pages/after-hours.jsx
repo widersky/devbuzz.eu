@@ -13,7 +13,7 @@ import {
 
 import ProjectTile from "../components/ProjectTile";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
-import Picture from "../components/Picture";
+import Picture from "../components/Avatar";
 
 const AfterHours = () => {
     const { t } = useTranslation(['common']);
@@ -32,7 +32,7 @@ const AfterHours = () => {
 
             <main className={"flex flex-col justify-center flex-grow"}>
                 <div className="py-24 flex items-center">
-                    <div className="container mx-auto grid grid-cols-2 gap-10 min-h-[calc(100vh-476px)]">
+                    <div className="container mx-auto px-4 lg:px-0 grid md:grid-cols-2 gap-10 min-h-[calc(100vh-476px)]">
                         {/* Left Side */}
                         <motion.div
                             initial={leftSideAnim.initial}
@@ -77,9 +77,9 @@ const AfterHours = () => {
                             animate={rightSideAnim.animate}
                             exit={rightSideAnim.exit}
                             transition={defaultTransition}
-                            className="relative flex justify-center items-center mt-24"
+                            className="relative hidden md:flex justify-center items-center mt-24"
                         >
-													<Picture width={759} height={613} fileName={"avatar-gaming"} />
+													<Picture width={1181} height={641} fileName={"avatar-gaming"} />
                         </motion.div>
                     </div>
                 </div>

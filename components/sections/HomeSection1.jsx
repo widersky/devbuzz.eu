@@ -20,8 +20,8 @@ const HomeSection1 = () => {
 	];
 
 	return (
-		<div className="py-32">
-			<div className="container mx-auto grid grid-cols-2 gap-10">
+		<div className="py-16 md:py-32">
+			<div className="container mx-auto px-4 lg:px-0 flex flex-col md:grid md:grid-cols-2 gap-10">
 				<div className="flex flex-col justify-center items-start">
 					<h3 className="text-4xl font-bold text-brandText">
 						{t("homeHeading1")}
@@ -82,12 +82,12 @@ const HomeSection1 = () => {
 					</div>
 				</div>
 
-				<div className="relative grid grid-cols-2 gap-6 grid-rows-2">
+				<div className="relative grid lg:grid-cols-2 gap-6 grid-rows-2">
 
-					<Counter count={"7+"} text={"lat doświadczenia komercyjnego"} />
-					<Counter count={"100+"} text={"stron, aplikacji, sklepów i projektów graficznych"} />
-					<Counter count={"6"} text={"stałych klientów od lat"} />
-					<Counter count={"~37tys."} text={"wypitych litrów wody"} />
+					<Counter count={"7+"} text={"lat doświadczenia komercyjnego"} gif={"coding"} />
+					<Counter count={"100+"} text={"stron, aplikacji, sklepów i projektów graficznych"} gif={"counting-fred"} />
+					<Counter count={"6"} text={"stałych klientów od lat"} gif={"bros"} />
+					<Counter count={"~37tys."} text={"wypitych litrów wody"} gif={"drinking-water"} />
 
 				</div>
 			</div>

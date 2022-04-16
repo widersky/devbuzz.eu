@@ -26,7 +26,7 @@ const BlogHome = ({ posts }) => {
 				description="Blog dotyczący webdevu oraz spraw dookoła niego."
 			/>
 
-			<main className="container mx-auto">
+			<main className="container mx-auto px-4 lg:px-0">
 				{/* Heading */}
 				<motion.div
 					initial={blogCardAnim.initial}
@@ -38,7 +38,7 @@ const BlogHome = ({ posts }) => {
 				</motion.div>
 
 				{/* Latest posts */}
-				<div className="grid grid-cols-3 gap-8 mt-10">
+				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
 					{postList.map(({ slug, data }, i) => (
 						<motion.div
 							initial={blogCardAnim.initial}

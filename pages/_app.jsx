@@ -16,7 +16,7 @@ const DevBuzzEU = ({ Component, pageProps, router }) => {
 
             <SiteHeader />
 
-            <div className={"flex flex-col min-h-screen pt-[7.375rem]"}>
+            <div className={"flex flex-col md:min-h-screen md:pt-[7.375rem]"}>
 							<div className={"flex flex-col flex-grow relative"}>
 								<AnimatePresence
 									exitBeforeEnter

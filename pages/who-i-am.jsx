@@ -9,7 +9,7 @@ import {
     defaultTransition,
 } from "../helpers/animations";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
-import Picture from "../components/Picture";
+import Avatar from "../components/Avatar";
 
 const Home = () => {
     const { t } = useTranslation(['common']);
@@ -28,7 +28,7 @@ const Home = () => {
 
             <main className={"flex flex-col justify-center flex-grow"}>
                 <div className="py-24 flex items-center">
-                    <div className="container mx-auto grid grid-cols-2 gap-10">
+                    <div className="container mx-auto px-4 lg:px-0 grid md:grid-cols-2 gap-10">
                         {/* Left side */}
                         <motion.div
                             initial={leftSideAnim.initial}
@@ -66,8 +66,9 @@ const Home = () => {
 														animate={rightSideAnim.animate}
 														exit={rightSideAnim.exit}
 														transition={defaultTransition}
+														className="hidden md:block"
 												>
-														<Picture width={444} height={607} fileName={"avatar-sitting"} />
+														<Avatar width={1030} height={655} fileName={"avatar-sitting"} />
 												</motion.div>
                     </div>
                 </div>

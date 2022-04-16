@@ -11,7 +11,7 @@ import {
 } from "../helpers/animations";
 import TechStack from "../components/globals/TechStack";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
-import Picture from "../components/Picture";
+import Avatar from "../components/Avatar";
 
 const WhatIDo = () => {
 	const {t} = useTranslation(['common']);
@@ -30,7 +30,7 @@ const WhatIDo = () => {
 
 			<main className={"flex flex-col justify-center flex-grow"}>
 				<div className="py-24 flex items-center">
-					<div className="container mx-auto grid grid-cols-2 gap-10">
+					<div className="container mx-auto px-4 lg:px-0 grid md:grid-cols-2 gap-10">
 
 						{/* Right side */}
 						<motion.div
@@ -68,8 +68,9 @@ const WhatIDo = () => {
 							animate={rightSideAnim.animate}
 							exit={rightSideAnim.exit}
 							transition={defaultTransition}
+							className="hidden md:block"
 						>
-							<Picture width={472} height={614} fileName={"avatar-sitting-2"}/>
+							<Avatar width={1247} height={659} fileName={"avatar-sitting-2"}/>
 						</motion.div>
 
 					</div>

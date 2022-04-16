@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 // Components
 import Button from "../Button";
 import TechStack from '../globals/TechStack';
-import Picture from "../Picture";
+import Avatar from "../Avatar";
 
 // Animations definitions
 import {
@@ -22,8 +22,8 @@ const HomeHero = () => {
     const { t } = useTranslation('common');
 
     return (
-        <div className="flex items-center min-h-[84vh] relative">
-            <div className="container mx-auto grid grid-cols-2 gap-10 relative">
+        <div className="flex items-center md:min-h-[84vh] py-16 md:py-0 relative">
+            <div className="container mx-auto px-4 lg:px-0 grid md:grid-cols-2 gap-10 relative">
                 {/* Left side */}
                 <motion.div
                     initial={leftSideAnim.initial}
@@ -69,19 +69,20 @@ const HomeHero = () => {
                     animate={rightSideAnim.animate}
                     exit={rightSideAnim.exit}
                     transition={defaultTransition}
+										className="hidden md:block"
                 >
-                    <Picture width={232} height={725} fileName={"avatar"} />
+                    <Avatar width={947} height={750} fileName={"avatar"} priority />
                 </motion.div>
             </div>
 
 					{/* Scroll prompt */}
-					<div className="absolute top-full left-1/2 -translate-x-1/2">
+					<div className="hidden md:block absolute top-full left-1/2 -translate-x-1/2">
 						<motion.div
 							initial={scrollPromptAnim.initial}
 							animate={scrollPromptAnim.animate}
 							exit={scrollPromptAnim.exit}
 						>
-							<Image src="/scroll-down.webp" loading="lazy" width={48} height={48} alt="Scroll down" />
+							<Image src="/scroll-down.webp" width={48} height={48} alt="Scroll down" priority />
 						</motion.div>
 					</div>
         </div>

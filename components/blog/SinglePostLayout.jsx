@@ -20,7 +20,7 @@ const Layout = ({ children, title, description, thumbnail, tags, date }) => {
 
             {thumbnail && (
                 <motion.div
-									className="w-full h-[480px] relative mb-6"
+									className="w-full h-80 md:h-[480px] relative mb-6"
 									initial={blogSinglePostImageAnim.initial}
 									animate={blogSinglePostImageAnim.animate}
 									exit={blogSinglePostImageAnim.exit}
@@ -38,7 +38,7 @@ const Layout = ({ children, title, description, thumbnail, tags, date }) => {
 
             <div className="container mx-auto -mt-40 relative z-10">
                 <motion.div
-									className="w-2/3 mx-auto pt-9 px-16 bg-brandLight bg-opacity-75 backdrop-blur-lg rounded-lg border-t border-white border-opacity-50"
+									className="lg:w-2/3 mx-auto pt-9 px-4 md:px-16 bg-brandLight bg-opacity-75 backdrop-blur-lg rounded-lg border-t border-white border-opacity-50"
 									initial={blogSinglePostContentAnim.initial}
 									animate={blogSinglePostContentAnim.animate}
 									exit={blogSinglePostContentAnim.exit}

@@ -10,7 +10,7 @@ import {
 	defaultTransition,
 } from "../helpers/animations";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
-import Picture from "../components/Picture";
+import Picture from "../components/Avatar";
 
 const WhoIWorkWith = () => {
 	const {t} = useTranslation(['common']);
@@ -21,7 +21,7 @@ const WhoIWorkWith = () => {
 
 			<main className={"flex flex-col justify-center flex-grow"}>
 				<div className="py-24 flex items-center">
-					<div className="container mx-auto grid grid-cols-2 gap-10">
+					<div className="container mx-auto px-4 lg:px-0 grid md:grid-cols-2 gap-10">
 
 						{/* Right side */}
 						<motion.div
@@ -79,8 +79,9 @@ const WhoIWorkWith = () => {
 							animate={rightSideAnim.animate}
 							exit={rightSideAnim.exit}
 							transition={defaultTransition}
+							className="hidden md:block"
 						>
-							<Picture width={200} height={732} fileName={"avatar-standing"}/>
+							<Picture width={935} height={746} fileName={"avatar-standing"}/>
 						</motion.div>
 
 					</div>

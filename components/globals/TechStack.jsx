@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const TechStack = () => {
     return (
-        <div className='grid grid-cols-8 gap-6 mt-16'>
+        <div className='grid w-full grid-cols-4 md:grid-cols-8 gap-6 mt-16'>
             <div className="place-self-center"><Image loading="lazy" src="/badge-html.webp" alt="HTML5" title="HTML5" width={34} height={46} /></div>
             <div className="place-self-center"><Image loading="lazy" src="/badge-css.webp" alt="CSS3" title="CSS3" width={34} height={46} /></div>
             <div className="place-self-center"><Image loading="lazy" src="/badge-scss.webp" alt="SCSS" title="SCSS" width={46} height={24} /></div>
