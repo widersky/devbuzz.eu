@@ -41,7 +41,7 @@ const HomeHero = () => {
 
                         <Button
                             text={t("cta")}
-                            href="mailto:adrian@devbuzz.eu"
+                            href="mailto:hello@devbuzz.eu"
                         />
 
                         <TechStack />

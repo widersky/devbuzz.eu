@@ -34,7 +34,7 @@ export const rightSideAnim = {
 
 export const blogCardAnim = {
 	initial: {
-		y: -50,
+		y: 50,
 		opacity: 0
 	},
 	animate: {

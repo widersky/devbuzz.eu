@@ -17,7 +17,7 @@ const HomeSection4 = () => {
 					</p>
 
 					<div className="flex flex-col md:flex-row justify-center items-center gap-8 mt-10">
-						<Button text={t("cta")} href="mailto:adrian@devbuzz.eu" />
+						<Button text={t("cta")} href="mailto:hello@devbuzz.eu" />
 						<span className="opacity-80">{t("or")}</span>
 						<Button
 							alt
