@@ -1,3 +1,6 @@
+import fs from 'fs';
+import path from 'path';
+
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 
