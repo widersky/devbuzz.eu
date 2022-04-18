@@ -1,9 +1,9 @@
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 
-import {serialize} from "next-mdx-remote/serialize";
-import {MDXRemote} from "next-mdx-remote";
-import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const SinglePostLayout = dynamic(() =>
 	import("../../components/blog/SinglePostLayout")
@@ -19,10 +19,10 @@ const components = {
 	p: Paragraph,
 	h1: Heading1,
 	h2: Heading2,
-	ul: Ul
+	ul: Ul,
 };
 
-const SinglePost = ({source, frontMatter}) => {
+const SinglePost = ({ source, frontMatter }) => {
 	const router = useRouter();
 
 	if (!router || !source) return <>Oops</>;
@@ -36,17 +36,31 @@ const SinglePost = ({source, frontMatter}) => {
 				tags={frontMatter.tags}
 				date={frontMatter.date}
 			>
-				<MDXRemote {...source} components={components} lazy/>
+				<MDXRemote {...source} components={components} lazy />
 			</SinglePostLayout>
 		</>
 	);
 };
 
+export const getStaticPaths = async () => {
+	const files = fs.readdirSync(path.join("_posts"));
+	const paths = files.map((filename) => ({
+		params: {
+			slug: filename.replace(".mdx", ""),
+		},
+	}));
+
+	return {
+		paths,
+		fallback: false,
+	};
+};
+
 export const getStaticProps = async ({ params, locale }) => {
-	const {getPostBySlug} = await import("../../api/getBlogPosts");
-	const {content, data} = await getPostBySlug(params.slug);
-	
-	console.log(params)
+	const { getPostBySlug } = await import("../../api/getBlogPosts");
+	const { content, data } = await getPostBySlug(params.slug);
+
+	console.log(params);
 
 	const mdxSource = await serialize(content, {
 		mdxOptions: {
@@ -60,7 +74,7 @@ export const getStaticProps = async ({ params, locale }) => {
 		props: {
 			...(await serverSideTranslations(locale, ["common"])),
 			source: mdxSource,
-			frontMatter: data
+			frontMatter: data,
 		},
 	};
 };
