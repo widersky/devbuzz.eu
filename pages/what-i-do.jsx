@@ -82,7 +82,7 @@ const WhatIDo = () => {
 
 export const getServerSideProps = async ({locale}) => ({
 	props: {
-		...(await serverSideTranslations(locale, ["common"])),
+		...await serverSideTranslations(locale, ["common"]),
 	},
 });
 
