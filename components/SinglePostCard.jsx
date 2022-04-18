@@ -1,16 +1,21 @@
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import LabelWithIcon from "components/LabelWithIcon";
 import Button from "./Button";
 import { useTranslation } from "react-i18next";
 
-const SinglePostCard = ({ data, slug, index }) => {
+const SinglePostCard = ({ data }) => {
 	const { t } = useTranslation();
+
+	useEffect(() => {
+		console.log(data);
+	}, [data]);
 
 	return (
 		<>
 			{data.thumbnailUrl && (
-				<Link href={`/blog/${slug}`} passHref>
+				<Link href={`/blog/${data.slug}`} passHref>
 					<div className="w-full h-72 relative mb-6 rounded-md overflow-hidden shadow-lg cursor-pointer">
 						<Image
 							src={data.thumbnailUrl}
@@ -23,11 +28,11 @@ const SinglePostCard = ({ data, slug, index }) => {
 			)}
 
 			<div className="flex gap-4 items-center">
-				<LabelWithIcon icon="calendar" text={data.date} iconSize={18} />
+				<LabelWithIcon icon="calendar" text={data.niceDate} iconSize={18} />
 				<LabelWithIcon icon="timer" text={data.readTime} iconSize={18} />
 			</div>
 
-			<Link href={`/blog/${slug}`}>
+			<Link href={`/blog/${data.slug}`}>
 				<a className="text-2xl font-bold text-brandText hover:text-brandRed transition-colors">
 					{data.title}
 				</a>
@@ -36,7 +41,7 @@ const SinglePostCard = ({ data, slug, index }) => {
 			<p>{data.description}</p>
 
 			<div className="flex justify-end mt-6">
-				<Button href={`/blog/${slug}`} text={t("readMore")} />
+				<Button href={`/blog/${data.slug}`} text={t("readMore")} />
 			</div>
 		</>
 	);

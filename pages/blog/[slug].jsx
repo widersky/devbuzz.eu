@@ -15,6 +15,14 @@ import Heading1 from "../../components/blog/Heading1";
 import Heading2 from "../../components/blog/Heading2";
 import Ul from "../../components/blog/Ul";
 
+import { BLOG_POST_FIELDS } from "../../lib/constants";
+
+// Posts API
+import {
+	getPostBySlug,
+	getBlogPosts	
+} from "../../api/getBlogPosts";
+
 const components = {
 	p: Paragraph,
 	h1: Heading1,
@@ -42,41 +50,48 @@ const SinglePost = ({ source, frontMatter }) => {
 	);
 };
 
-export const getStaticPaths = async ({ params, locale }) => {
-	const { getBlogPosts } = await import("../../api/getBlogPosts");
-	const blogPosts = await getBlogPosts(locale);
-	const paths = blogPosts.map((post) => ({
-		params: {
-			slug: post.slug.split("/"),
-		},
-	}));
+export default SinglePost;
 
-	return {
-		paths,
-		fallback: false,
-	};
-};
+export const getStaticProps = async ({ params, locale }) => {
+	const post = getPostBySlug(
+		params.slug,
+		BLOG_POST_FIELDS,
+		locale
+	);
 
-export const getStaticProps = async ({ params: { slug }, locale }) => {
-	const { getPostBySlug } = await import("../../api/getBlogPosts");
-	const { content, data } = await getPostBySlug(slug);
-
-	const mdxSource = await serialize(content, {
+	const mdxSource = await serialize(post.content, {
 		mdxOptions: {
 			remarkPlugins: [],
 			rehypePlugins: [],
 		},
-		scope: data,
+		scope: post,
 	});
 
 	return {
 		props: {
 			...(await serverSideTranslations(locale, ["common"])),
-			slug,
 			source: mdxSource,
-			frontMatter: data,
+			frontMatter: post,
 		},
 	};
 };
 
-export default SinglePost;
+export const getStaticPaths = async () => {
+	const plPosts = getBlogPosts(["slug"], "pl");
+	const enPosts = getBlogPosts(["slug"], "en");
+	
+	const plPaths = plPosts.map((post) => ({
+		params: { slug: post.slug },
+		locale: 'pl'
+	}));
+	
+	const enPaths = enPosts.map((post) => ({
+		params: { slug: post.slug },
+		locale: 'en'
+	}));
+	
+	return {
+		paths: enPaths.concat(plPaths),
+		fallback: false,
+	};
+};

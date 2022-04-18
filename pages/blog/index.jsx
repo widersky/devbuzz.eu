@@ -3,11 +3,14 @@ import { NextSeo } from "next-seo";
 import { v4 as uuidv4 } from "uuid";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
+// Components
 import SinglePostCard from "components/SinglePostCard";
+
+// Constants
+import { BLOG_POST_FIELDS } from "../../lib/constants";
 
 // Animations
 import { motion } from "framer-motion";
-
 import { blogCardAnim } from "../../helpers/animations";
 
 const chunk = (arr, size) =>
@@ -39,22 +42,19 @@ const BlogHome = ({ posts }) => {
 
 				{/* Latest posts */}
 				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
-					{postList.map(({ slug, data }, i) => (
-						<motion.div
-							initial={blogCardAnim.initial}
-							animate={blogCardAnim.animate}
-							exit={blogCardAnim.exit}
-							transition={{ delay: i * 0.1, duration: 0.5 }}
-							className="flex flex-col gap-3 text-brandTextLight text-sm"
-							key={uuidv4()}
-						>
-							<SinglePostCard
-								data={data}
-								slug={slug}
-								index={i}								
-							/>
-						</motion.div>
-					))}
+					{postList
+						.map((data, i) => (
+							<motion.div
+								initial={blogCardAnim.initial}
+								animate={blogCardAnim.animate}
+								exit={blogCardAnim.exit}
+								transition={{ delay: i * 0.1, duration: 0.5 }}
+								className="flex flex-col gap-3 text-brandTextLight text-sm"
+								key={uuidv4()}
+							>
+								<SinglePostCard data={data} />
+							</motion.div>
+						))}
 				</div>
 			</main>
 		</>
@@ -63,7 +63,7 @@ const BlogHome = ({ posts }) => {
 
 export const getStaticProps = async ({ locale }) => {
 	const { getBlogPosts } = await import("../../api/getBlogPosts");
-	const posts = await getBlogPosts(locale);
+	const posts = getBlogPosts(BLOG_POST_FIELDS, locale);
 
 	return {
 		props: {
