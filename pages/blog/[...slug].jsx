@@ -1,6 +1,3 @@
-import fs from 'fs';
-import path from 'path';
-
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 
@@ -45,11 +42,12 @@ const SinglePost = ({ source, frontMatter }) => {
 	);
 };
 
-export const getStaticPaths = async () => {
-	const files = fs.readdirSync(path.join("_posts"));
-	const paths = files.map((filename) => ({
+export const getStaticPaths = async ({ params, locale }) => {
+	const { getBlogPosts } = await import("../../api/getBlogPosts");
+	const blogPosts = await getBlogPosts(locale);
+	const paths = blogPosts.map((post) => ({
 		params: {
-			slug: filename.replace(".mdx", ""),
+			slug: post.slug.split("/"),
 		},
 	}));
 
@@ -59,11 +57,9 @@ export const getStaticPaths = async () => {
 	};
 };
 
-export const getStaticProps = async ({ params, locale }) => {
+export const getStaticProps = async ({ params: { slug }, locale }) => {
 	const { getPostBySlug } = await import("../../api/getBlogPosts");
-	const { content, data } = await getPostBySlug(params.slug);
-
-	console.log(params);
+	const { content, data } = await getPostBySlug(slug);
 
 	const mdxSource = await serialize(content, {
 		mdxOptions: {
@@ -76,6 +72,7 @@ export const getStaticProps = async ({ params, locale }) => {
 	return {
 		props: {
 			...(await serverSideTranslations(locale, ["common"])),
+			slug,
 			source: mdxSource,
 			frontMatter: data,
 		},
