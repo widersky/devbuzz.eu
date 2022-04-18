@@ -22,6 +22,7 @@ const HomeSection2 = () => {
 						src="/floating-images/tools.webp"
 						width={512}
 						height={512}
+						loading="lazy"
 						className="hidden md:block"
 					/>
 
