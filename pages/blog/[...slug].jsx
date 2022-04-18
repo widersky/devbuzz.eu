@@ -42,7 +42,7 @@ const SinglePost = ({source, frontMatter}) => {
 	);
 };
 
-export const getServerSideProps = async ({ params, locale }) => {
+export const getStaticProps = async ({ params, locale }) => {
 	const {getPostBySlug} = await import("../../api/getBlogPosts");
 	const {content, data} = await getPostBySlug(params.slug);
 	

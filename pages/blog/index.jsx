@@ -61,7 +61,7 @@ const BlogHome = ({ posts }) => {
 	);
 };
 
-export const getServerSideProps = async ({ locale }) => {
+export const getStaticProps = async ({ locale }) => {
 	const { getBlogPosts } = await import("../../api/getBlogPosts");
 	const posts = await getBlogPosts(locale);
 
