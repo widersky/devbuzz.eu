@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { motion } from "framer-motion";
 

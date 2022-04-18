@@ -17,10 +17,6 @@ module.exports = (phase, { defaultConfig }) => {
         swcMinify: true,
         reactStrictMode: true,
         productionBrowserSourceMaps: true,
-        experimental: {
-            runtime: "nodejs",
-            serverComponents: true,
-        },
         webpack: (config, { isServer }) => {
             if (!isServer) {
                 config.resolve.fallback = {
