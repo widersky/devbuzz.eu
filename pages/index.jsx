@@ -1,4 +1,5 @@
-import Head from 'next/head';
+import { NextSeo } from "next-seo";
+import { useTranslation } from "next-i18next";
 
 import HomeHero from '../components/sections/HomeHero';
 import HomeSection1 from '../components/sections/HomeSection1';
@@ -8,12 +9,14 @@ import HomeSection4 from '../components/sections/HomeSection4';
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const Home = () => {
+	const {t} = useTranslation("seo");
+	
   return (
     <>
-      <Head>
-        <title>DevBuzz | Adrian Widerski - Fullstack web developer</title>
-        <meta name="description" content="Blog dotyczący webdevu oraz spraw dookoła niego." />
-      </Head>
+			<NextSeo
+				title="DevBuzz | Adrian Widerski - Fullstack web developer"
+				description={t('indexDesc')}
+			/>
 
       <main>
         <HomeHero />
@@ -28,7 +31,7 @@ const Home = () => {
 
 export const getStaticProps = async ({ locale }) => ({
 	props: {
-		...await serverSideTranslations(locale, ["common"]),
+		...await serverSideTranslations(locale, ["common", "seo"]),
 	},
 });
 

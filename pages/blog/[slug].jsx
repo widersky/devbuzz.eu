@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
+import { NextSeo } from "next-seo";
 
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
@@ -37,12 +38,16 @@ const SinglePost = ({ source, frontMatter }) => {
 
 	return (
 		<>
+			<NextSeo 
+				title={frontMatter.title}
+				description={frontMatter.description}
+			/>
 			<SinglePostLayout
 				title={frontMatter.title}
 				description={frontMatter.description}
 				thumbnail={frontMatter.thumbnailUrl}
 				tags={frontMatter.tags}
-				date={frontMatter.date}
+				date={frontMatter.niceDate}
 			>
 				<MDXRemote {...source} components={components} lazy />
 			</SinglePostLayout>

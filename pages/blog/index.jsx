@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NextSeo } from "next-seo";
 import { v4 as uuidv4 } from "uuid";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
 // Components
 import SinglePostCard from "components/SinglePostCard";
@@ -19,6 +20,7 @@ const chunk = (arr, size) =>
 	);
 
 const BlogHome = ({ posts }) => {
+	const { t } = useTranslation("seo");
 	const [currentPage, setCurrentPage] = useState(1);
 	const postList = posts[currentPage - 1];
 
@@ -26,7 +28,7 @@ const BlogHome = ({ posts }) => {
 		<>
 			<NextSeo
 				title="Blog · DevBuzz"
-				description="Blog dotyczący webdevu oraz spraw dookoła niego."
+				description={t('blogMain')}
 			/>
 
 			<main className="container mx-auto px-4 lg:px-0">
@@ -67,7 +69,7 @@ export const getStaticProps = async ({ locale }) => {
 
 	return {
 		props: {
-			...(await serverSideTranslations(locale, ["common"])),
+			...(await serverSideTranslations(locale, ["common", "seo"])),
 			posts: chunk(posts, 10),
 		},
 	};
