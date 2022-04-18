@@ -39,7 +39,7 @@ const BlogHome = ({ posts }) => {
 					exit={blogCardAnim.exit}
 					transition={{ duration: 0.5 }}
 				>
-					<h1 className="text-4xl font-bold text-brandText">Blog</h1>
+					<h1 className="text-2xl font-normal text-brandText py-4 px-5 uppercase bg-white/50 rounded-lg">Blog</h1>
 				</motion.div>
 
 				{/* Latest posts */}
