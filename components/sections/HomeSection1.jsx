@@ -84,10 +84,10 @@ const HomeSection1 = () => {
 
 				<div className="relative grid lg:grid-cols-2 gap-6 grid-rows-2">
 
-					<Counter count={"7+"} text={"lat doświadczenia komercyjnego"} gif={"coding"} />
-					<Counter count={"100+"} text={"stron, aplikacji, sklepów i projektów graficznych"} gif={"counting-fred"} />
-					<Counter count={"6"} text={"stałych klientów od lat"} gif={"bros"} />
-					<Counter count={"~37tys."} text={"wypitych litrów wody"} gif={"drinking-water"} />
+					<Counter count={"7+"} text={t('tile1')} gif={"coding"} />
+					<Counter count={"100+"} text={t('tile2')} gif={"counting-fred"} />
+					<Counter count={"6"} text={t('tile3')} gif={"bros"} />
+					<Counter count={"~37tys."} text={t('tile4')} gif={"drinking-water"} />
 
 				</div>
 			</div>
