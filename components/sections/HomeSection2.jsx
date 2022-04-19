@@ -33,12 +33,7 @@ const HomeSection2 = () => {
 					<p className="text-lg text-brandTextLight mt-10 leading-relaxed">{t('homeText3')}</p>
 					<p className="text-lg text-brandTextLight mt-4 mb-10 leading-relaxed">{t("homeText4")}</p>
 
-					<Link
-						href="https://github.com/widersky/falcon-starter"
-						passHref
-					>
-						<ProjectTile about={t("aboutFalcon")} iconSrc="/icon-falcon.webp" title="Falcon Starter"/>
-					</Link>
+					{/* <ProjectTile about={t("aboutFalcon")} href="" iconSrc="/owns/icon-falcon.webp" title="Falcon Starter"/> */}
 				</div>
 
 			</div>
