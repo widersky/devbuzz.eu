@@ -89,7 +89,7 @@ const SiteHeader = () => {
 						transition={{ duration: 0.2 }}
 						className="lg:hidden fixed top-0 left-0 right-0 bottom-0 z-40 flex items-center justify-center text-center bg-brandLight/60 backdrop-blur-xl"
 					>
-						<ul className="flex flex-col gap-5 gap-10 text-md uppercase">
+						<ul className="flex flex-col gap-5 lg:gap-10 text-md uppercase">
 							{siteNav.map((item, i) => (
 								<motion.div
 									initial={mobileMenuItem.initial}
@@ -112,17 +112,15 @@ const SiteHeader = () => {
 				<div className="container mx-auto px-4 lg:px-0 flex flex-col md:flex-row justify-between items-center py-8">
 					
 					{/* Logo */}
-					<Link href="/" passHref>
-						<a>
-							<Image
-								src="/devbuzz-logo.svg"
-								loading="lazy"
-								className="cursor-pointer"
-								alt="DevBuzz logo"
-								width={219}
-								height={48}
-							/>
-						</a>
+					<Link href="/" className="flex-none">
+						<Image
+							src="/devbuzz-logo.svg"
+							loading="lazy"
+							className="cursor-pointer"
+							alt="DevBuzz logo"
+							width={198}
+							height={30}
+						/>
 					</Link>
 			
 					{/* Menu */}
@@ -130,7 +128,7 @@ const SiteHeader = () => {
 						<span />
 					</button>
 					
-					<nav className="mt-1 hidden lg:block">
+					<nav className="mt-2 hidden lg:block">
 						<ul className="flex gap-5 xl:gap-10 text-sm uppercase">
 							{siteNav.map((item) => (
 								<Nav text={item.text} route={item.route} key={uuidv4()} />
